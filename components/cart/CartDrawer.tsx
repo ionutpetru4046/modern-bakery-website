@@ -2,6 +2,7 @@
 
 import { useCart } from "@/context/CartContext";
 import { X, Trash2 } from "lucide-react";
+import Link from "next/link";
 
 export default function CartDrawer({
   open,
@@ -121,9 +122,11 @@ export default function CartDrawer({
             <div className="mt-6 space-y-3">
               
               {/* CHECKOUT CTA */}
-              <button className="w-full rounded-full bg-[#D4A373] py-3 font-semibold text-black hover:scale-[1.02] transition">
-                Proceed to Checkout
-              </button>
+              <Link href="/checkout">
+                <button className="w-full rounded-full bg-[#D4A373] py-3 font-semibold text-black hover:scale-[1.02] transition">
+                  Proceed to Checkout
+                </button>
+              </Link>
 
               {/* CLEAR CART */}
               <button
