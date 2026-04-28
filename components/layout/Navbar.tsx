@@ -1,60 +1,113 @@
 "use client";
 
 import Link from "next/link";
-import { Menu } from "lucide-react";
-import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Menu", href: "/" },
-  { name: "About", href: "/" },
-  { name: "Gallery", href: "/" },
-  { name: "Contact", href: "/" },
+  { name: "Menu", href: "/menu" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <motion.header
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/40 backdrop-blur-xl"
-    >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
-        
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-2xl font-bold tracking-wide text-white"
-        >
-          Velora
-        </Link>
+    <>
+      {/* NAVBAR */}
+      <header className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/40 backdrop-blur-xl">
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
+          
+          {/* LOGO */}
+          <Link href="/" className="text-2xl font-bold text-white">
+            Velora
+          </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-10 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-sm font-medium text-white/80 transition hover:text-[#D4A373]"
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
+          {/* DESKTOP */}
+          <nav className="hidden items-center gap-10 md:flex">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-sm text-white/80 transition hover:text-[#D4A373]"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
 
-        {/* CTA Button */}
-        <div className="hidden md:block">
-          <button className="rounded-full bg-[#D4A373] px-6 py-3 text-sm font-semibold text-black transition hover:scale-105">
-            Order Now
+          {/* CTA */}
+          <Link href="/order" className="hidden md:block">
+            <button className="rounded-full bg-[#D4A373] px-6 py-3 text-sm font-semibold text-black hover:scale-105 transition">
+              Order Now
+            </button>
+          </Link>
+
+          {/* MOBILE BUTTON */}
+          <button
+            onClick={() => setOpen(true)}
+            className="text-white md:hidden"
+          >
+            <Menu size={28} />
           </button>
         </div>
+      </header>
 
-        {/* Mobile Menu Icon */}
-        <button className="text-white md:hidden">
-          <Menu size={28} />
-        </button>
-      </div>
-    </motion.header>
+      {/* MOBILE MENU */}
+      <AnimatePresence>
+        {open && (
+          <>
+            {/* BACKDROP */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setOpen(false)}
+              className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
+            />
+
+            {/* SIDEBAR */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "tween", duration: 0.3 }}
+              className="fixed right-0 top-0 z-50 h-full w-[75%] bg-[#0F0F0F] border-l border-white/10 p-6"
+            >
+              {/* CLOSE */}
+              <button
+                onClick={() => setOpen(false)}
+                className="mb-10 text-white"
+              >
+                <X size={28} />
+              </button>
+
+              {/* LINKS */}
+              <div className="flex flex-col gap-6">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="text-lg text-white/80 hover:text-[#D4A373]"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+
+                <Link href="/order" onClick={() => setOpen(false)}>
+                  <button className="mt-6 w-full rounded-full bg-[#D4A373] py-3 font-semibold text-black">
+                    Order Now
+                  </button>
+                </Link>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
