@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { CartProvider } from "../context/CartContext";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,18 +44,11 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col bg-[#0F0F0F] text-white">
-        
-        {/* GLOBAL PROVIDERS */}
         <CartProvider>
-
-          {/* GLOBAL NAVBAR (IMPORTANT FIX) */}
           <Navbar />
-
-          {/* PAGE CONTENT */}
-          <main className="flex-1 pt-20">
-            {children}
-          </main>
-
+          <main className="flex-1 pt-20">{children}</main>
+          {/* Add global footer for full layout consistency */}
+          <Footer />
         </CartProvider>
       </body>
     </html>

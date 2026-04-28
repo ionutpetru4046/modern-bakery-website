@@ -2,7 +2,6 @@ import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
 import Testimonials from "@/components/sections/Testimonial";
-import Footer from "@/components/layout/Footer";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import Link from "next/link";
 import { products } from "@/data/products";
@@ -47,7 +46,6 @@ export default function HomePage() {
       </section>
       <FeaturedProducts />
       <Testimonials />
-      <Footer />
     </main>
   );
 }
