@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
 import Testimonials from "@/components/sections/Testimonial";
+import Footer from "@/components/layout/Footer";
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       <Hero />
       <FeaturedProducts />
       <Testimonials />
+      <Footer />
     </main>
   );
 }
