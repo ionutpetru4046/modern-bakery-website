@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 
 const footerLinks = [
   {
@@ -50,10 +51,22 @@ export default function Footer() {
         {/* TOP GRID */}
         <div className="grid gap-16 lg:grid-cols-4">
 
-          {/* BRAND */}
+          {/* BRAND WITH LOGO */}
           <div>
-            <Link href="/" className="text-3xl font-bold tracking-wide text-white">
-              Velora
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-3xl font-bold tracking-wide text-white"
+            >
+              <span className="relative block h-20 w-30">
+                <Image
+                  src="/logoBakery.jpg"
+                  alt="Velora Bakery Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                  sizes="36px"
+                />
+              </span>
             </Link>
 
             <p className="mt-6 max-w-sm text-white/60 leading-relaxed">
@@ -125,13 +138,6 @@ export default function Footer() {
               Join Our Bakery Newsletter
             </h3>
             {/* Add link to the full newsletter page */}
-            <Link
-              href="/newsletter"
-              className="text-xs px-3 py-1 rounded-full bg-[#D4A373]/10 text-[#D4A373] hover:bg-[#D4A373]/20 transition ml-2 border border-[#D4A373]/30"
-              aria-label="Go to full newsletter page"
-            >
-              View Page
-            </Link>
           </div>
 
           <p className="mt-2 text-white/60">

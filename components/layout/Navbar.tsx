@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import CartDrawer from "../cart/CartDrawer";
 import { useCart } from "@/context/CartContext";
+import Image from "next/image";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -53,12 +54,22 @@ export default function Navbar() {
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
           
-          {/* LOGO (READY FOR IMAGE LATER) */}
+          {/* LOGO WITH IMAGE */}
           <Link
             href="/"
-            className="text-2xl font-bold tracking-wide text-white"
+            className="flex items-center gap-2 text-2xl font-bold tracking-wide text-white"
           >
-            Velora
+            <span className="relative block h-20 w-30">
+              <Image
+                src="/logoBakery.jpg"
+                alt="Velora Bakery Logo"
+                fill
+                className="object-contain"
+                priority
+                sizes="36px"
+              />
+            </span>
+      
           </Link>
 
           {/* DESKTOP NAV */}
