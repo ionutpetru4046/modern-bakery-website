@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { Menu, X, ShoppingBag } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import CartDrawer from "../cart/CartDrawer";
 import { useCart } from "@/context/CartContext";
 
@@ -18,46 +19,79 @@ const navLinks = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const { cart } = useCart(); // 👈 REAL-TIME CART DATA
+  const pathname = usePathname();
+  const { cart } = useCart();
 
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+  // 🔥 SCROLL EFFECT
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // 🔥 AUTO CLOSE MOBILE MENU ON ROUTE CHANGE
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <>
       {/* NAVBAR */}
-      <header className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/40 backdrop-blur-xl">
+      <header
+        className={`fixed top-0 left-0 z-50 w-full border-b transition-all duration-300 ${
+          scrolled
+            ? "bg-black/80 backdrop-blur-xl border-white/10"
+            : "bg-black/20 backdrop-blur-md border-transparent"
+        }`}
+      >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
           
-          {/* LOGO */}
-          <Link href="/" className="text-2xl font-bold text-white">
+          {/* LOGO (READY FOR IMAGE LATER) */}
+          <Link
+            href="/"
+            className="text-2xl font-bold tracking-wide text-white"
+          >
             Velora
           </Link>
 
           {/* DESKTOP NAV */}
           <nav className="hidden items-center gap-10 md:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm text-white/80 transition hover:text-[#D4A373]"
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`text-sm transition ${
+                    isActive
+                      ? "text-[#D4A373]"
+                      : "text-white/70 hover:text-[#D4A373]"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* RIGHT ACTIONS */}
           <div className="flex items-center gap-4">
             
-            {/* CART BUTTON */}
+            {/* CART */}
             <button
               onClick={() => setCartOpen(true)}
-              className="relative text-white transition hover:text-[#D4A373]"
+              className="relative text-white hover:text-[#D4A373]"
             >
               <ShoppingBag size={24} />
 
-              {/* CART BADGE */}
               {cartCount > 0 && (
                 <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#D4A373] text-xs font-bold text-black">
                   {cartCount}
@@ -90,6 +124,7 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <>
+            {/* BACKDROP */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -98,12 +133,13 @@ export default function Navbar() {
               className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
             />
 
+            {/* SIDEBAR */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="fixed right-0 top-0 z-50 h-full w-[75%] border-l border-white/10 bg-[#0F0F0F] p-6"
+              className="fixed right-0 top-0 z-50 h-full w-[75%] bg-[#0F0F0F] border-l border-white/10 p-6"
             >
               <button
                 onClick={() => setOpen(false)}
@@ -113,16 +149,23 @@ export default function Navbar() {
               </button>
 
               <div className="flex flex-col gap-6">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="text-lg text-white/80 hover:text-[#D4A373]"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href;
+
+                  return (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      className={`text-lg transition ${
+                        isActive
+                          ? "text-[#D4A373]"
+                          : "text-white/80 hover:text-[#D4A373]"
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                })}
 
                 <Link href="/order" onClick={() => setOpen(false)}>
                   <button className="mt-6 w-full rounded-full bg-[#D4A373] py-3 font-semibold text-black">
