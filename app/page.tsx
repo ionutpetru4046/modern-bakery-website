@@ -3,8 +3,8 @@ import Hero from "@/components/sections/Hero";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
 import Testimonials from "@/components/sections/Testimonial";
 import ScrollReveal from "@/components/animations/ScrollReveal";
-import Link from "next/link";
 import { products } from "@/data/products";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
