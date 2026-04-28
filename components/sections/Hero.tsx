@@ -1,79 +1,87 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 
-export default function Hero() {
+export default function HomePage() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-[#0F0F0F] px-6 pt-24">
-      
-      {/* Background Glow */}
-      <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D4A373]/20 blur-3xl" />
+    <main className="bg-[#0F0F0F] text-white">
+      {/* HERO */}
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+        {/* BACKGROUND IMAGE */}
+        <div
+          className="absolute inset-0 scale-110 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2000&auto=format&fit=crop')",
+            transform: "translateY(0px)",
+          }}
+        />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2">
-        
-        {/* LEFT CONTENT */}
-        <div>
+        {/* DARK OVERLAY */}
+        <div className="absolute inset-0 bg-black/70" />
+
+        {/* GOLD GRADIENT GLOW */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black" />
+
+        {/* CONTENT */}
+        <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+          {/* SMALL LABEL */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-4 text-sm uppercase tracking-[0.3em] text-[#D4A373]"
+            transition={{ duration: 0.8 }}
+            className="text-sm uppercase tracking-[0.3em] text-[#D4A373]"
           >
-            Artisan Bakery
+            Artisan Bakery Experience
           </motion.p>
 
+          {/* TITLE */}
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-2xl text-5xl font-bold leading-tight text-white md:text-7xl"
+            transition={{ duration: 1 }}
+            className="mt-6 text-5xl font-bold leading-tight md:text-7xl"
           >
-            Freshly Baked Luxury Every Morning
+            Baked With Passion.
+            <span className="text-[#D4A373]">Served With Elegance.</span>
           </motion.h1>
 
+          {/* DESCRIPTION */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-white/70"
+            transition={{ delay: 0.4 }}
+            className="mt-6 text-white/60"
           >
-            Experience handcrafted pastries, premium coffee, and warm
-            artisan breads made daily with passion and elegance.
+            A modern bakery where craftsmanship meets design. Fresh pastries,
+            artisan bread, and desserts made with precision and soul.
           </motion.p>
 
-          {/* BUTTONS */}
+          {/* CTA BUTTONS */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2 }}
-            className="mt-10 flex flex-wrap gap-4"
+            transition={{ delay: 0.6 }}
+            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
-            <button className="rounded-full bg-[#D4A373] px-8 py-4 text-sm font-semibold text-black transition duration-300 hover:scale-105">
-              Order Now
-            </button>
+            <Link href="/menu">
+              <button className="rounded-full bg-[#D4A373] px-8 py-3 font-semibold text-black transition hover:scale-105">
+                Explore Menu
+              </button>
+            </Link>
 
-            <button className="rounded-full border border-white/20 px-8 py-4 text-sm font-semibold text-white transition duration-300 hover:border-[#D4A373] hover:text-[#D4A373]">
-              Explore Menu
-            </button>
+            <Link href="/gallery">
+              <button className="rounded-full border border-white/20 px-8 py-3 font-semibold text-white transition hover:border-[#D4A373] hover:text-[#D4A373]">
+                View Gallery
+              </button>
+            </Link>
           </motion.div>
+
+          {/* SCROLL INDICATOR */}
+          <div className="mt-16 animate-bounce text-white/40">↓ Scroll</div>
         </div>
-
-        {/* RIGHT IMAGE */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 1 }}
-          className="relative"
-        >
-          <div className="absolute inset-0 rounded-[40px] bg-[#D4A373]/20 blur-2xl" />
-
-          <img
-            src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200&auto=format&fit=crop"
-            alt="Bakery"
-            className="relative z-10 h-[600px] w-full rounded-[40px] object-cover shadow-2xl"
-          />
-        </motion.div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }
