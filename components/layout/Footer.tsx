@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
+import { useState } from "react";
 
 const footerLinks = [
   {
@@ -26,6 +27,18 @@ const footerLinks = [
 ];
 
 export default function Footer() {
+  // Newsletter logic integrated here from Newsletter.tsx
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubscribe(e: React.FormEvent) {
+    e.preventDefault();
+    // Here you could integrate your actual subscription logic
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 3500); // Reset message after 3.5s
+    setEmail("");
+  }
+
   return (
     <footer className="relative overflow-hidden border-t border-white/10 bg-[#080808]">
       
@@ -104,28 +117,51 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* NEWSLETTER (🔥 NEW — HIGH CONVERSION AREA) */}
+        {/* NEWSLETTER (🔥 Integrated Newsletter Page) */}
         <div className="mt-20 border-t border-white/10 pt-10">
           
-          <h3 className="text-lg font-semibold text-white">
-            Join our newsletter
-          </h3>
+          <div className="flex items-center gap-3 mb-2">
+            <h3 className="text-lg font-semibold text-white">
+              Join Our Bakery Newsletter
+            </h3>
+            {/* Add link to the full newsletter page */}
+            <Link
+              href="/newsletter"
+              className="text-xs px-3 py-1 rounded-full bg-[#D4A373]/10 text-[#D4A373] hover:bg-[#D4A373]/20 transition ml-2 border border-[#D4A373]/30"
+              aria-label="Go to full newsletter page"
+            >
+              View Page
+            </Link>
+          </div>
 
           <p className="mt-2 text-white/60">
-            Weekly updates on fresh pastries & exclusive offers.
+            Get weekly updates on fresh pastries, seasonal menus, and exclusive offers.
           </p>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <form
+            className="mt-6 flex flex-col gap-3 sm:flex-row"
+            onSubmit={handleSubscribe}
+          >
             <input
               type="email"
               placeholder="Enter your email"
               className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 text-white outline-none"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
             />
 
-            <button className="rounded-lg bg-[#D4A373] px-6 py-3 font-semibold text-black">
-              Subscribe
+            <button
+              type="submit"
+              className="rounded-lg bg-[#D4A373] px-6 py-3 font-semibold text-black transition hover:scale-[1.02]"
+              disabled={submitted}
+            >
+              {submitted ? "Subscribed!" : "Subscribe"}
             </button>
-          </div>
+          </form>
+          <p className="mt-4 text-xs text-white/40">
+            No spam. Unsubscribe anytime.
+          </p>
         </div>
 
         {/* BOTTOM */}
@@ -149,7 +185,6 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-
       </div>
     </footer>
   );
