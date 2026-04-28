@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 :root {
   --background: #0f0f0f;
@@ -15,4 +13,5 @@ body {
 
 * {
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
