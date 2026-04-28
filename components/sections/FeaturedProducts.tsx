@@ -3,6 +3,7 @@
 import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import { useCart } from "../../context/CartContext";
 
 const products = [
   {
@@ -47,6 +48,9 @@ export default function FeaturedProducts() {
     loop: true,
     align: "start",
   });
+
+  // Fix: Call useCart INSIDE the component, not at the top level
+  const { addToCart } = useCart();
 
   // AUTOPLAY
   useEffect(() => {
@@ -124,7 +128,18 @@ export default function FeaturedProducts() {
                       </span>
                     </div>
 
-                    <button className="w-full rounded-full bg-[#D4A373] py-3 text-sm font-semibold text-black transition duration-300 hover:scale-[1.02]">
+                    
+                    <button
+                      onClick={() =>
+                        addToCart({
+                          id: product.id,
+                          name: product.name,
+                          price: Number(product.price.replace("$", "")),
+                          image: product.image,
+                        })
+                      }
+                      className="w-full rounded-full bg-[#D4A373] py-3 text-sm font-semibold text-black"
+                    >
                       Add To Cart
                     </button>
                   </div>

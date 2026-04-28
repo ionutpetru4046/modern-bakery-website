@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingBag } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import CartDrawer from "../cart/CartDrawer";
+import { useCart } from "@/context/CartContext";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -14,6 +16,11 @@ const navLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+
+  const { cart } = useCart(); // 👈 REAL-TIME CART DATA
+
+  const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <>
@@ -26,7 +33,7 @@ export default function Navbar() {
             Velora
           </Link>
 
-          {/* DESKTOP */}
+          {/* DESKTOP NAV */}
           <nav className="hidden items-center gap-10 md:flex">
             {navLinks.map((link) => (
               <Link
@@ -39,28 +46,49 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* CTA */}
-          <Link href="/order" className="hidden md:block">
-            <button className="rounded-full bg-[#D4A373] px-6 py-3 text-sm font-semibold text-black hover:scale-105 transition">
-              Order Now
-            </button>
-          </Link>
+          {/* RIGHT ACTIONS */}
+          <div className="flex items-center gap-4">
+            
+            {/* CART BUTTON */}
+            <button
+              onClick={() => setCartOpen(true)}
+              className="relative text-white transition hover:text-[#D4A373]"
+            >
+              <ShoppingBag size={24} />
 
-          {/* MOBILE BUTTON */}
-          <button
-            onClick={() => setOpen(true)}
-            className="text-white md:hidden"
-          >
-            <Menu size={28} />
-          </button>
+              {/* CART BADGE */}
+              {cartCount > 0 && (
+                <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#D4A373] text-xs font-bold text-black">
+                  {cartCount}
+                </span>
+              )}
+            </button>
+
+            {/* CTA */}
+            <Link href="/order" className="hidden md:block">
+              <button className="rounded-full bg-[#D4A373] px-6 py-3 text-sm font-semibold text-black transition hover:scale-105">
+                Order Now
+              </button>
+            </Link>
+
+            {/* MOBILE MENU */}
+            <button
+              onClick={() => setOpen(true)}
+              className="text-white md:hidden"
+            >
+              <Menu size={28} />
+            </button>
+          </div>
         </div>
       </header>
+
+      {/* CART DRAWER */}
+      <CartDrawer open={cartOpen} setOpen={setCartOpen} />
 
       {/* MOBILE MENU */}
       <AnimatePresence>
         {open && (
           <>
-            {/* BACKDROP */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -69,15 +97,13 @@ export default function Navbar() {
               className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
             />
 
-            {/* SIDEBAR */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="fixed right-0 top-0 z-50 h-full w-[75%] bg-[#0F0F0F] border-l border-white/10 p-6"
+              className="fixed right-0 top-0 z-50 h-full w-[75%] border-l border-white/10 bg-[#0F0F0F] p-6"
             >
-              {/* CLOSE */}
               <button
                 onClick={() => setOpen(false)}
                 className="mb-10 text-white"
@@ -85,7 +111,6 @@ export default function Navbar() {
                 <X size={28} />
               </button>
 
-              {/* LINKS */}
               <div className="flex flex-col gap-6">
                 {navLinks.map((link) => (
                   <Link
