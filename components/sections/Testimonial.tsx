@@ -31,6 +31,33 @@ const testimonials = [
     image:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=400&auto=format&fit=crop",
   },
+  {
+    id: 4,
+    name: "Oliver Martinez",
+    role: "Pastry Chef",
+    review:
+      "As a pastry chef, I'm impressed by the attention to detail in every treat and the innovative menu. Truly inspiring!",
+    image:
+      "https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=400&auto=format&fit=crop",
+  },
+  {
+    id: 5,
+    name: "Grace Kim",
+    role: "Event Planner",
+    review:
+      "Velora is my go-to for every special occasion. Their desserts are always a showstopper and wow my guests!",
+    image:
+      "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=400&auto=format&fit=crop",
+  },
+  {
+    id: 6,
+    name: "Lucas Petrov",
+    role: "Travel Writer",
+    review:
+      "From the croissants to the cupcakes, everything tastes like a Parisian morning. I recommend it to all my readers.",
+    image:
+      "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=400&auto=format&fit=crop",
+  },
 ];
 
 export default function Testimonials() {
