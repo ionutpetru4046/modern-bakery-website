@@ -54,22 +54,26 @@ export default function Navbar() {
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
           
-          {/* LOGO WITH IMAGE */}
+          {/* MODERN LOGO DESIGN */}
           <Link
             href="/"
-            className="flex items-center gap-2 text-2xl font-bold tracking-wide text-white"
+            className="flex items-center gap-3 text-2xl font-bold tracking-wide text-white group"
+            style={{ textDecoration: "none" }}
           >
-            <span className="relative block h-20 w-30">
+            {/* Circular Glassy Logo Container with Soft Shadow */}
+            <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#faf6f2]/60 to-[#ecd4b8]/30 shadow-[0_2px_20px_2px_rgba(212,163,115,0.07)] ring-2 ring-[#D4A373]/10 overflow-hidden group-hover:ring-[#D4A373]/30 transition-all duration-300 ease-in-out">
               <Image
                 src="/logoBakery.jpg"
                 alt="Velora Bakery Logo"
                 fill
-                className="object-contain"
+                className="object-cover scale-95 saturate-100 hover:saturate-150 transition-all duration-300"
                 priority
-                sizes="36px"
+                sizes="56px"
               />
             </span>
-      
+            <span className="ml-1 font-serif text-[1.7rem] font-extrabold tracking-tight text-white leading-tight select-none drop-shadow-[0_3px_12px_rgba(212,163,115,0.03)] group-hover:text-[#D4A373] transition-colors duration-300">
+              Velora Bakery
+            </span>
           </Link>
 
           {/* DESKTOP NAV */}
