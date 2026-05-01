@@ -51,21 +51,24 @@ export default function Footer() {
         {/* TOP GRID */}
         <div className="grid gap-16 lg:grid-cols-4">
 
-          {/* BRAND WITH LOGO */}
+          {/* BRAND WITH LOGO (Styled same as Navbar) */}
           <div>
             <Link
               href="/"
-              className="flex items-center gap-2 text-3xl font-bold tracking-wide text-white"
+              className="group flex items-center gap-2 select-none"
             >
-              <span className="relative block h-20 w-30">
+              <span className="relative block h-14 w-14 transition-transform duration-300 scale-95 saturate-100 group-hover:saturate-150">
                 <Image
                   src="/logoBakery.jpg"
                   alt="Velora Bakery Logo"
                   fill
-                  className="object-contain"
+                  className="object-cover scale-95 saturate-100 group-hover:saturate-150 transition-all duration-300"
                   priority
-                  sizes="36px"
+                  sizes="56px"
                 />
+              </span>
+              <span className="ml-1 font-serif text-[1.7rem] font-extrabold tracking-tight text-white leading-tight select-none drop-shadow-[0_3px_12px_rgba(212,163,115,0.03)] group-hover:text-[#D4A373] transition-colors duration-300">
+                Velora Bakery
               </span>
             </Link>
 
