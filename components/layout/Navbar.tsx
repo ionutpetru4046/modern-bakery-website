@@ -61,7 +61,7 @@ export default function Navbar() {
             style={{ textDecoration: "none" }}
           >
             {/* Circular Glassy Logo Container with Soft Shadow */}
-            <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#faf6f2]/60 to-[#ecd4b8]/30 shadow-[0_2px_20px_2px_rgba(212,163,115,0.07)] ring-2 ring-[#D4A373]/10 overflow-hidden group-hover:ring-[#D4A373]/30 transition-all duration-300 ease-in-out">
+            <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-br from-[#faf6f2]/60 to-[#ecd4b8]/30 shadow-[0_2px_20px_2px_rgba(212,163,115,0.07)] ring-2 ring-[#D4A373]/10 overflow-hidden group-hover:ring-[#D4A373]/30 transition-all duration-300 ease-in-out">
               <Image
                 src="/logoBakery.jpg"
                 alt="Velora Bakery Logo"
