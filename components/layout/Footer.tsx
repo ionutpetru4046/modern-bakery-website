@@ -111,7 +111,7 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin size={18} className="mt-1 text-[#D4A373]" />
                 <p className="text-white/60">
-                  Dublin City Center, Ireland
+                  Velora Bakery, Dublin City Center, Ireland
                 </p>
               </div>
 
