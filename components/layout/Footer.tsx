@@ -42,15 +42,12 @@ export default function Footer() {
 
   return (
     <footer className="relative overflow-hidden border-t border-white/10 bg-[#080808]">
-      
       {/* Glow */}
       <div className="absolute bottom-0 left-1/2 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-[#D4A373]/10 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-24">
-
         {/* TOP GRID */}
         <div className="grid gap-16 lg:grid-cols-4">
-
           {/* BRAND WITH LOGO (Styled same as Navbar) */}
           <div>
             <Link
@@ -73,8 +70,8 @@ export default function Footer() {
             </Link>
 
             <p className="mt-6 max-w-sm text-white/60 leading-relaxed">
-              Experience handcrafted pastries, artisan coffee,
-              and luxury bakery moments designed with elegance.
+              Experience handcrafted pastries, artisan coffee, and luxury bakery
+              moments designed with elegance.
             </p>
           </div>
 
@@ -102,12 +99,9 @@ export default function Footer() {
 
           {/* CONTACT */}
           <div>
-            <h3 className="mb-6 text-lg font-semibold text-white">
-              Contact
-            </h3>
+            <h3 className="mb-6 text-lg font-semibold text-white">Contact</h3>
 
             <div className="space-y-5">
-
               <div className="flex items-start gap-3">
                 <MapPin size={18} className="mt-1 text-[#D4A373]" />
                 <p className="text-white/60">
@@ -117,25 +111,19 @@ export default function Footer() {
 
               <div className="flex items-center gap-3">
                 <Phone size={18} className="text-[#D4A373]" />
-                <p className="text-white/60">
-                  +353 89 123 4567
-                </p>
+                <p className="text-white/60">+353 89 123 4567</p>
               </div>
 
               <div className="flex items-center gap-3">
                 <Mail size={18} className="text-[#D4A373]" />
-                <p className="text-white/60">
-                  velorabakery@gmail.com
-                </p>
+                <p className="text-white/60">velorabakery@gmail.com</p>
               </div>
-
             </div>
           </div>
         </div>
 
         {/* NEWSLETTER (🔥 Integrated Newsletter Page) */}
         <div className="mt-20 border-t border-white/10 pt-10">
-          
           <div className="flex items-center gap-3 mb-2">
             <h3 className="text-lg font-semibold text-white">
               Join Our Bakery Newsletter
@@ -144,7 +132,8 @@ export default function Footer() {
           </div>
 
           <p className="mt-2 text-white/60">
-            Get weekly updates on fresh pastries, seasonal menus, and exclusive offers.
+            Get weekly updates on fresh pastries, seasonal menus, and exclusive
+            offers.
           </p>
 
           <form
@@ -156,7 +145,7 @@ export default function Footer() {
               placeholder="Enter your email"
               className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 text-white outline-none"
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
 
@@ -175,7 +164,6 @@ export default function Footer() {
 
         {/* BOTTOM */}
         <div className="mt-20 flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 md:flex-row">
-
           <p className="text-sm text-white/40">
             © 2026 Velora Bakery. All rights reserved.
           </p>
