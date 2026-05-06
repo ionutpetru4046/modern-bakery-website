@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-scroll-behavior="smooth"
+      // Remove data-scroll-behavior as it's not a standard html attribute to avoid React/Next warning
       className={cn(
         "h-full",
         "antialiased",
@@ -43,6 +43,7 @@ export default function RootLayout({
         "font-sans",
         inter.variable
       )}
+      style={{ scrollBehavior: "smooth" }} // Apply smooth scroll via style
     >
       <body className="min-h-full flex flex-col bg-[#0F0F0F] text-white">
         <CartProvider>
