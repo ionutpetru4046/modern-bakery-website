@@ -50,7 +50,7 @@ export default function AboutPage() {
           <h3 className="text-2xl font-bold mb-2 text-[#D4A373]">From Our Founder</h3>
           <p className="text-white/70 text-base md:text-lg">
             <span className="block mb-3">
-              "My journey started at my grandmother's hearth in Marseille, where I learned that every loaf carries a story. At Velora, we knead those stories into every batch—fusing honest ingredients, science, and creativity. Our bakery is more than a place; it’s an experience that inspires joy, sharing, and discovery."
+              &quot;My journey started at my grandmother&apos;s hearth in Marseille, where I learned that every loaf carries a story. At Velora, we knead those stories into every batch—fusing honest ingredients, science, and creativity. Our bakery is more than a place; it’s an experience that inspires joy, sharing, and discovery."
             </span>
             <span className="mt-4 italic text-white/40">– Amélie Lefevre, Founder &amp; Head Baker</span>
           </p>
@@ -58,10 +58,11 @@ export default function AboutPage() {
         <div className="flex-1 w-full flex justify-center">
           <div className="rounded-2xl overflow-hidden shadow-2xl border-2 border-[#D4A373]/30 max-w-xs">
             <img
-              src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?q=80&w=800&auto=format&fit=crop"
-              alt="Founder Amélie Lefevre"
+              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=800&auto=format&fit=crop"
+              alt="Founder Amélie Lefevre, smiling woman in chef coat"
               className="object-cover w-full aspect-square grayscale-[30%] hover:grayscale-0 transition duration-500"
             />
+      
           </div>
         </div>
       </section>
@@ -70,15 +71,19 @@ export default function AboutPage() {
       <section className="mx-auto mt-24 max-w-6xl ">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <img
-            src="https://images.unsplash.com/photo-1422513391413-ddd4f2ce3340?q=80&w=800&auto=format&fit=crop"
-            alt="Fresh sourdough"
+            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop"
+            alt="Cheesecake on a rustic plate"
             className="h-64 md:h-72 object-cover rounded-2xl brightness-90 hover:brightness-100 transition"
           />
+    
+    
           <img
-            src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?q=80&w=800&auto=format&fit=crop"
-            alt="Artisan pastries"
+            src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?q=80&w=800&auto=format&fit=crop"
+            alt="Bakery kitchen with breads and pastries"
             className="h-64 md:h-72 object-cover rounded-2xl brightness-90 hover:brightness-100 transition"
           />
+    
+    
           <img
             src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=800&auto=format&fit=crop"
             alt="Bakery interior"
