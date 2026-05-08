@@ -31,7 +31,7 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-tr from-[#110d09] via-[#17120c] to-[#0F0F0F] px-2 py-10 md:px-8 md:py-20 flex flex-col items-center justify-start text-white relative">
+    <main className="min-h-screen bg-linear-to-tr from-[#110d09] via-[#17120c] to-[#0F0F0F] px-2 py-10 md:px-8 md:py-20 flex flex-col items-center justify-start text-white relative">
       {/* Decorative Gradient Circles */}
       <div className="pointer-events-none absolute left-[-100px] top-0 h-72 w-72 bg-[#D4A373]/20 rounded-full blur-3xl z-0 hidden sm:block"></div>
       <div className="pointer-events-none absolute right-[-100px] bottom-0 h-64 w-64 bg-[#D4A373]/30 rounded-full blur-2xl z-0 hidden md:block"></div>
@@ -41,7 +41,7 @@ export default function ContactPage() {
         <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.3em] text-[#D4A373] drop-shadow">
           Get in Touch
         </p>
-        <h1 className="mt-4 text-4xl md:text-6xl font-extrabold bg-gradient-to-r from-[#D4A373] via-[#F3E9DD] to-[#B37A4B] bg-clip-text text-transparent drop-shadow">
+        <h1 className="mt-4 text-4xl md:text-6xl font-extrabold bg-linear-to-r from-[#D4A373] via-[#F3E9DD] to-[#B37A4B] bg-clip-text text-transparent drop-shadow">
           Contact Velora Bakery
         </h1>
         <p className="mt-6 text-base md:text-lg text-white/70 max-w-2xl mx-auto">
@@ -54,7 +54,7 @@ export default function ContactPage() {
         {/* FORM BLOCK */}
         <form
           onSubmit={handleSubmit}
-          className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#222017]/80 via-[#18120b]/80 to-[#1B150D]/80 p-6 md:p-10 shadow-2xl backdrop-blur-sm flex flex-col shadow-[#D4A373]/5 transition-all"
+          className="rounded-3xl border border-white/10 bg-linear-to-br from-[#222017]/80 via-[#18120b]/80 to-[#1B150D]/80 p-6 md:p-10 shadow-2xl backdrop-blur-sm flex flex-col shadow-[#D4A373]/5 transition-all"
         >
           <h2 className="mb-4 text-2xl md:text-3xl font-semibold bg-gradient-to-l from-[#D4A373] to-[#B37A4B] bg-clip-text text-transparent">
             Send Us a Message
