@@ -43,7 +43,7 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-white/10 bg-[#080808]">
       {/* Glow */}
-      <div className="absolute bottom-0 left-1/2 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-[#D4A373]/10 blur-3xl" />
+      <div className="absolute bottom-0 left-1/2 h-75 w-75 -translate-x-1/2 rounded-full bg-[#D4A373]/10 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-24">
         {/* TOP GRID */}
