@@ -104,7 +104,7 @@ export default function ContactPage() {
           </div>
           <button
             type="submit"
-            className={`mt-7 w-full rounded-2xl bg-gradient-to-r from-[#D4A373] via-[#ECD7BE] to-[#B37A4B] px-6 py-3 text-lg font-bold text-[#252018] shadow-lg shadow-[#D4A373]/10 hover:scale-[1.015] hover:from-[#E7B078] hover:to-[#D4A373] focus:outline-none transition-all duration-150 ${
+            className={`mt-7 w-full rounded-2xl bg-linear-to-r from-[#D4A373] via-[#ECD7BE] to-[#B37A4B] px-6 py-3 text-lg font-bold text-[#252018] shadow-lg shadow-[#D4A373]/10 hover:scale-[1.015] hover:from-[#E7B078] hover:to-[#D4A373] focus:outline-none transition-all duration-150 ${
               status === "submitting" ? "opacity-60 cursor-not-allowed" : ""
             }`}
             disabled={status === "submitting"}
@@ -126,7 +126,7 @@ export default function ContactPage() {
         {/* CONTACT INFO BLOCK */}
         <div className="flex flex-col justify-between rounded-3xl border border-white/10 bg-gradient-to-br from-[#191209]/70 via-[#181717]/80 to-[#21180D]/80 p-6 md:p-10 shadow-2xl backdrop-blur-sm min-h-[340px]">
           <div>
-            <h2 className="mb-4 text-2xl md:text-3xl font-semibold bg-gradient-to-l from-[#D4A373] to-[#B37A4B] bg-clip-text text-transparent">
+            <h2 className="mb-4 text-2xl md:text-3xl font-semibold gi from-[#D4A373] to-[#B37A4B] bg-clip-text text-transparent">
               Contact Details
             </h2>
             <ul className="space-y-6 text-white/85">
